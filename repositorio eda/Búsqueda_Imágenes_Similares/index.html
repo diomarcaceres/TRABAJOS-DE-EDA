@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Imágenes Avanzado</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            color: #333;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #367C39;
+        }
+        .results, .gallery {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+        .results img, .gallery img {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Explorador de Imágenes Avanzado</h1>
+            <p>Descubre imágenes similares utilizando nuestra herramienta avanzada.</p>
+        </header>
+
+        <div class="input-group">
+            <label for="fileElem">Cargar Colección de Imágenes</label>
+            <input type="file" id="fileElem" multiple accept="image/*">
+        </div>
+        <div class="gallery"></div>
+
+        <div class="input-group">
+            <label for="queryFile">Seleccionar Imagen de Consulta</label>
+            <input type="file" id="queryFile" accept="image/*">
+        </div>
+        <img id="queryImage" src="#" alt="Imagen de consulta" style="display: none;">
+
+        <div class="button-group">
+            <button id="searchButton" disabled>Buscar Imágenes Similares</button>
+        </div>
+
+        <div class="results"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+

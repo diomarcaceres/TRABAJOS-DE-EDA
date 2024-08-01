@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Proximidad Interactiva</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        body { 
+            display: flex; 
+            margin: 0; 
+            font-family: 'Arial', sans-serif; 
+            background: #f8f9fa;
+        }
+        #sidebar { 
+            width: 300px; 
+            background-color: #343a40; 
+            color: white; 
+            padding: 20px; 
+            height: 100vh; 
+            overflow: auto; 
+        }
+        #main { 
+            flex-grow: 1; 
+            padding: 20px; 
+            background: #fff;
+        }
+        .form-section { 
+            background: #495057; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 10px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        input, button { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border-radius: 5px; 
+            border: 1px solid #ced4da; 
+            background: #fff; 
+            color: #495057;
+        }
+        button { 
+            background-color: #007bff; 
+            color: white; 
+            cursor: pointer; 
+            border: none;
+        }
+        button:hover { 
+            background-color: #0056b3; 
+        }
+        #map { 
+            width: 100%; 
+            height: 500px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h1>Gestión de Repartidores</h1>
+        <div class="form-section">
+            <h3>Agregar Repartidor</h3>
+            <input type="number" id="repartidor-lat" placeholder="Latitud" required>
+            <input type="number" id="repartidor-lon" placeholder="Longitud" required>
+            <input type="text" id="repartidor-name" placeholder="Nombre del Repartidor" required>
+            <button onclick="addRepartidor()">Agregar</button>
+        </div>
+        <button onclick="randomRepartidores()">Generar Aleatorios</button>
+    </div>
+    <div id="main">
+        <h2>Mapa Interactivo</h2>
+        <div id="map"></div>
+        <div id="results"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([-15.8402, -70.0219], 13); // Coordenadas de Puno
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Aquí puedes añadir más lógica para interactuar con el mapa
+    </script>
+</body>
+</html>
