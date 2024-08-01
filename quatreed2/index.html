@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compresión de Imagen con Quad Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #eef1f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+        h2, h4 {
+            color: #2c3e50;
+        }
+        canvas {
+            border: 3px solid #3498db;
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        input[type=range], input[type=file] {
+            width: 80%;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        #thresholdValue {
+            font-weight: bold;
+            margin-left: 10px;
+            color: #16a085;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #e74c3c;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        .results {
+            grid-column: 1 / -1;
+            background: #ecf0f1;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Compresión de Imagen con Quad Tree</h2>
+    <input type="file" id="imageInput" accept="image/*">
+    <br>
+    <label for="threshold">Umbral:</label>
+    <input type="range" id="threshold" name="threshold" min="1" max="255" value="50">
+    <span id="thresholdValue">50</span>
+    <br>
+    <div>
+        <canvas id="originalCanvas" width="400" height="400"></canvas>
+        <canvas id="reconstructedCanvas" width="400" height="400"></canvas>
+    </div>
+    <div class="button-container">
+        <button id="reconstructButton" onclick="reconstructImage()">Reconstruir Imagen</button>
+        <button id="saveButton" onclick="saveReconstructed()">Guardar Imagen Reconstruida</button>
+    </div>
+    <h4>MSE (Mean Squared Error): <span id="mseValue">0.00</span></h4>
+
+    <script src="quadtree.js"></script>
+</body>
+</html>
